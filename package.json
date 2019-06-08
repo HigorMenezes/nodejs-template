@@ -1,13 +1,13 @@
 {
 	"name": "nodejs-template",
 	"version": "1.0.0",
-	"description": "",
+	"description": "## dotenv template",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon --exec babel-node src/index.js",
-		"build": "babel src --out-dir dist",
-		"serve": "node dist/index.js",
-		"test": "nodemon --exec babel-node src/index.test.js"
+		"start": "NODE_ENV=production node src/index.js",
+		"dev": "NODE_ENV=development nodemon src/index.js",
+		"test": "NODE_ENV=test node src/index.js",
+		"sequelize:migrate": "NODE_ENV=development npx sequelize db:migrate"
 	},
 	"repository": {
 		"type": "git",
@@ -20,23 +20,20 @@
 		"url": "https://github.com/HigorMenezes/nodejs-template/issues"
 	},
 	"homepage": "https://github.com/HigorMenezes/nodejs-template#readme",
+	"dependencies": {
+		"dotenv": "^8.0.0",
+		"express": "^4.17.1",
+		"pg": "^7.11.0",
+		"sequelize": "^5.8.7"
+	},
 	"devDependencies": {
-		"@babel/cli": "^7.4.4",
-		"@babel/core": "^7.4.5",
-		"@babel/node": "^7.4.5",
-		"@babel/preset-env": "^7.4.5",
 		"eslint": "^5.16.0",
 		"eslint-config-airbnb-base": "^13.1.0",
 		"eslint-config-prettier": "^4.3.0",
 		"eslint-plugin-import": "^2.17.3",
 		"eslint-plugin-prettier": "^3.1.0",
 		"nodemon": "^1.19.1",
-		"prettier": "^1.17.1"
-	},
-	"dependencies": {
-		"body-parser": "^1.19.0",
-		"compression": "^1.7.4",
-		"dotenv": "^8.0.0",
-		"express": "^4.17.1"
+		"prettier": "^1.18.2",
+		"sequelize-cli": "^5.4.0"
 	}
 }
