@@ -6,6 +6,7 @@ const db = {
 	password: process.env.DB_PASSWORD || 'admin',
 	database: process.env.DB_DATABASE || 'admin',
 	dialect: process.env.DB_DIALECT || 'postgres',
+	storage: process.env.DB_STORAGE || './__tests__/database.sqlite',
 	logging: false,
 	define: {
 		timestamps: true,

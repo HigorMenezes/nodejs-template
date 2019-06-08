@@ -6,9 +6,14 @@ const usersController = {
 			await User.create(req.body)
 		} catch (err) {
 			console.error(err)
-			res.status(500).send({ code: 500, message: 'Error during user create' })
+			return res
+				.status(500)
+				.send({ code: 500, message: 'Error during user create' })
 		}
-		res.status(201).send({ code: 201, message: 'User created with success' })
+
+		return res
+			.status(201)
+			.send({ code: 201, message: 'User created with success' })
 	},
 }
 module.exports = usersController
