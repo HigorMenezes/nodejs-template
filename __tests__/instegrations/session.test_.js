@@ -1,60 +1,60 @@
-const request = require('supertest')
-const factory = require('../factories')
-const app = require('../../src/app')
-const truncate = require('../utils/truncate')
+const request = require('supertest');
+const factory = require('../factories');
+const app = require('../../src/app');
+const truncate = require('../utils/truncate');
 
 describe('Authentication - Login', () => {
 	beforeEach(async () => {
-		await truncate()
-	})
+		await truncate();
+	});
 
 	it('should authenticate with valid credentials', async () => {
 		const user = await factory.create('User', {
 			password: '123',
-		})
+		});
 
 		const response = await request(app)
 			.post('/sessions')
-			.send({ email: user.email, password: '123' })
-		expect(response.status).toBe(200)
-	})
+			.send({ email: user.email, password: '123' });
+		expect(response.status).toBe(200);
+	});
 
 	it('should not authenticate with invalid (password) credentials', async () => {
 		const user = await factory.create('User', {
 			password: '123',
-		})
+		});
 
 		const response = await request(app)
 			.post('/sessions')
-			.send({ email: user.email, password: '123456' })
+			.send({ email: user.email, password: '123456' });
 
-		expect(response.status).toBe(401)
-	})
+		expect(response.status).toBe(401);
+	});
 
 	it('should not authenticate with invalid (e-mail) credentials', async () => {
 		const user = await factory.create('User', {
 			password: '123',
-		})
+		});
 
 		const response = await request(app)
 			.post('/sessions')
-			.send({ email: 'test@test.com', password: user.password })
+			.send({ email: 'test@test.com', password: user.password });
 
-		expect(response.status).toBe(404)
-	})
+		expect(response.status).toBe(404);
+	});
 
 	it('should return jwt token when authenticated', async () => {
 		const user = await factory.create('User', {
 			password: '123',
-		})
+		});
 
 		const response = await request(app)
 			.post('/sessions')
-			.send({ email: user.email, password: '123' })
+			.send({ email: user.email, password: '123' });
 
-		expect(response.body).toHaveProperty('token')
-	})
-})
+		expect(response.body).toHaveProperty('token');
+	});
+});
 
 // describe('Authentication - Access', () => {
 // 	beforeEach(async () => {
