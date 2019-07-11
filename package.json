@@ -9,7 +9,8 @@
     "start": "NODE_ENV=production node src/index.js",
     "dev": "NODE_ENV=development nodemon src/index.js",
     "test": "NODE_ENV=test jest",
-    "prettier:fix": "prettier --config ./.prettierrc.json --write  './src/**/*.js' './__tests__/**/*.js' "
+    "prettier:fix": "prettier --config ./.prettierrc.json --write  './src/**/*.js' './__tests__/**/*.js' ",
+    "eslint:fix": "eslint --fix './src/**/*.js' './__tests__/**/*.js' "
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -64,3 +64,17 @@ typings/
 dist/
 
 # keep folders
+!__tests__
+!__tests__/units
+!__tests__/integrations
+
+!src
+!src/app
+!src/app/controllers
+!src/app/middleware
+!src/app/models
+!src/app/routes
+
+!src/config
+
+!src/util
