@@ -55,13 +55,12 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.development
-.env.production
-.env.test
+.env.*
 
 # next.js build output
 .next
 
 # node build
 dist/
+
+# keep folders

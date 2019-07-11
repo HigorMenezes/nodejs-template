@@ -1,9 +1,14 @@
-const express = require('express')
-const routes = require('./routes')
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const routes = require('./routes');
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-routes(app)
+app.use(cors());
+app.use(helmet());
+app.use(express.json());
 
-module.exports = app
+routes(app);
+
+module.exports = app;
